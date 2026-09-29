@@ -29,6 +29,22 @@ A small, reproducible classroom example for explaining k-means clustering to stu
 
 **Teaching note:** The numerical cluster labels have no inherent meaning. Interpret clusters using centroid profiles. K-means does not guarantee that clusters are distinctly separated in a two-dimensional plot.
 
+## Separate WEKA analysis supplied by the author (41,592 records)
+
+The following results come from a **different crop dataset** supplied for analysis. That dataset is **not included** in this repository; the 60-record synthetic CSV above will not reproduce these numbers. Its original source, licence and any preprocessing performed before import should be documented before the dataset or its screenshots are published.
+
+**Method.** WEKA `SimpleKMeans` was run on the training set with `numClusters = 3`, Euclidean distance, a maximum of 500 iterations and random seed 10. The run contained 41,592 records and eight attributes: soil type, rainfall, temperature, fertiliser use, irrigation use, weather condition, days to harvest and yield. WEKA reported that missing values were globally replaced with the mean or mode. The model took 14 iterations; within-cluster sum of squared errors was 78,522.992 (in WEKA's distance calculation). This is a descriptive clustering result, not a predictive test on unseen data.
+
+| Cluster | Records | Share | Rainfall centroid (mm) | Yield centroid (t/ha) | Modal soil | Modal fertiliser | Modal irrigation | Modal weather |
+| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |
+| 0 | 15,540 | 37% | 560.86 | 4.00 | Clay | No | No | Cloudy |
+| 1 | 10,736 | 26% | 449.98 | 3.88 | Chalky | No | Yes | Sunny |
+| 2 | 15,316 | 37% | 609.59 | 5.84 | Peaty | Yes | Yes | Sunny |
+
+**Interpretation.** Cluster 2 has the highest average rainfall and yield, while cluster 1 has the lowest averages for both. Cluster 0 lies between them for rainfall and yield. For numeric attributes, a centroid reports a mean; for categorical attributes, WEKA displays a modal category. These profiles describe groups in this dataset. They do not establish that fertiliser, irrigation, soil or rainfall caused differences in yield. Yield itself was included as a clustering attribute, so the yield differences are part of how the groups were formed.
+
+The dataset source and preprocessing history are not yet documented here. Cluster labels are arbitrary, and changing the selected attributes, scaling, seed or number of clusters can change the result. Do not use the 60-record synthetic plot above as a visualisation of this separate 41,592-record run.
+
 ## Optional Python run
 
 ```bash
