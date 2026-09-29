@@ -31,7 +31,7 @@ A small, reproducible classroom example for explaining k-means clustering to stu
 
 ## Separate WEKA analysis supplied by the author (41,592 records)
 
-The following results come from a **different crop dataset** supplied for analysis. That dataset is **not included** in this repository; the 60-record synthetic CSV above will not reproduce these numbers. Its original source, licence and any preprocessing performed before import should be documented before the dataset or its screenshots are published.
+The following results come from a **different crop dataset** supplied for analysis. That dataset is **not included** in this repository; The 60-record synthetic dataset does not reproduce this separate 41,592-record analysis. Its original source, licence and any preprocessing performed before import should be documented before the dataset or its screenshots are published.
 
 **Method.** WEKA `SimpleKMeans` was run on the training set with `numClusters = 3`, Euclidean distance, a maximum of 500 iterations and random seed 10. The run contained 41,592 records and eight attributes: soil type, rainfall, temperature, fertiliser use, irrigation use, weather condition, days to harvest and yield. WEKA reported that missing values were globally replaced with the mean or mode. The model took 14 iterations; within-cluster sum of squared errors was 78,522.992 (in WEKA's distance calculation). This is a descriptive clustering result, not a predictive test on unseen data.
 
